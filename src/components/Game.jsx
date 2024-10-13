@@ -19,24 +19,24 @@ const Game = () => {
   const [showMore, setShowMore] = useState(false);
 
   const initialItems = [
-    { img: pes2019, text: "PES 2019" },
-    { img: fifa2019, text: "FIFA 2019" },
-    { img: naruto, text: "NARUTO STORM 4" },
-    { img: gta, text: "GTA V" },
-    { img: tekken, text: "TEKKEN 7" },
+    { img: pes2019 },
+    { img: fifa2019 },
+    { img: naruto },
+    { img: gta },
+    { img: tekken },
   ];
 
   const additionalItems = [
-    { img: battlefield, text: "BATTLEFIELD 4" },
-    { img: spiderman, text: "SPIDERMAN" },
-    { img: wwe, text: "WWE 2017" },
-    { img: ufc, text: "UFC 2" },
-    { img: crash, text: "CRASH BANDICOOT" },
-    { img: horizon, text: "HORIZON ZERO DAWN" },
-    { img: gow, text: "GOD OF WAR" },
-    { img: marvel, text: "MARVEL VS CAPCOM" },
-    { img: injustice, text: "INJUSTICE 2" },
-    { img: nfs, text: "NEED FOR SPEED" },
+    { img: battlefield },
+    { img: spiderman },
+    { img: wwe },
+    { img: ufc },
+    { img: crash },
+    { img: horizon },
+    { img: gow },
+    { img: marvel },
+    { img: injustice },
+    { img: nfs },
   ];
 
   const itemsToDisplay = showMore
@@ -62,11 +62,6 @@ const Game = () => {
                 alt={`Image ${index + 1}`}
                 className="w-48 h-48 object-cover mb-2 group-hover:scale-105 rounded-xl border-4 border-gray-800 shadow-xl transition hover:border-blue-500 hover:shadow-blue-500/10"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
-                <p className="text-white font-bold text-lg md:text-xl text-center">
-                  {item.text}
-                </p>
-              </div>
             </div>
           ))}
         </div>

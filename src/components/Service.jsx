@@ -42,7 +42,7 @@ function Services() {
 
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {menuItems.map((item, index) => (
-            <a
+            <div
               key={index}
               className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-blue-500 hover:shadow-blue-500/10"
               href="#">
@@ -53,7 +53,7 @@ function Services() {
                 {item.title}
               </h2>
               <p className="mt-1 text-sm text-gray-300">{item.description}</p>
-            </a>
+            </div>
           ))}
         </div>
       </div>
