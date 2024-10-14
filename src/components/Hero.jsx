@@ -16,7 +16,7 @@ const Hero = () => {
             Step Into the Ultimate <br /> Gaming Arena!
           </h2>
           <Link
-            to="features"
+            to="services"
             smooth={true}
             duration={500}
             className="bg-text text-white font-bold px-4 py-2 rounded hover:bg-blue-500 transition cursor-pointer md:px-6 md:py-3">

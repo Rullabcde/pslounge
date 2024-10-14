@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Mengimpor ikon
+import { motion } from "framer-motion";
+import { FaChevronDown } from "react-icons/fa";
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -53,7 +54,7 @@ const FAQ = () => {
             FAQ
           </h2>
           <p className="mt-2 mb-10 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">
-            Paling sering ditanyakan
+            Most Frequently Asked
           </p>
         </div>
         <div className="space-y-4">
@@ -63,15 +64,25 @@ const FAQ = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full text-left text-lg font-medium text-white focus:outline-none flex justify-between items-center">
                 {faq.question}
-                {openIndex === index ? (
-                  <FaChevronUp className="text-white" />
-                ) : (
+                <motion.div
+                  initial={false}
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}>
                   <FaChevronDown className="text-white" />
-                )}
+                </motion.div>
               </button>
-              {openIndex === index && (
-                <p className="mt-2 text-white">{faq.answer}</p>
-              )}
+
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={
+                  openIndex === index
+                    ? { opacity: 1, height: "auto" }
+                    : { opacity: 0, height: 0 }
+                }
+                transition={{ duration: 0.4 }}
+                className="overflow-hidden mt-2 text-white">
+                {openIndex === index && <p>{faq.answer}</p>}
+              </motion.div>
             </div>
           ))}
         </div>

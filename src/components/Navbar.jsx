@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,17 +57,30 @@ const Navbar = () => {
           PSLounge
         </h1>
 
-        <div
+        {/* Animasi Icon Hamburger */}
+        <motion.div
           className={`md:hidden text-2xl cursor-pointer mr-7 sm:mr-10 ${
             isScrolled ? "text-white" : "text-white"
           }`}
-          onClick={toggleMenu}>
+          onClick={toggleMenu}
+          initial={{ rotate: 0 }}
+          animate={{ rotate: isOpen ? 180 : 0 }} // Rotasi saat diklik
+          transition={{ duration: 0.3 }}>
           {isOpen ? <FaTimes /> : <FaBars />}
-        </div>
+        </motion.div>
 
-        <ul
+        {/* Animasi Menu */}
+        <motion.ul
+          initial={{ opacity: 0, y: -50 }} // Kondisi awal saat menu belum terbuka
+          animate={{
+            opacity: isOpen || window.innerWidth >= 768 ? 1 : 0, // Menu tetap terlihat pada layar besar
+            y: isOpen || window.innerWidth >= 768 ? 0 : -50, // Menu turun pada layar besar
+          }}
+          transition={{ duration: 0.5 }}
           className={`flex flex-col items-center space-y-4 text-base md:flex-row md:space-x-4 md:space-y-0 md:mt-0 md:items-center lg:text-lg ${
-            isOpen ? "absolute top-14 py-2 shadow-lg left-0 w-full" : "hidden"
+            isOpen
+              ? "absolute top-14 py-2 shadow-lg left-0 w-full bg-second"
+              : "hidden"
           } md:flex bg-second rounded-lg md:bg-transparent`}>
           {["home", "services", "benefits", "games", "clients", "faq"].map(
             (section) => (
@@ -83,7 +97,17 @@ const Navbar = () => {
               </li>
             )
           )}
-        </ul>
+
+          <li className="md:hidden">
+            <a
+              href="https://wa.me/6281225121872?text=Permisi,%20kak%20saya%20ingin%20booking."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-text text-white font-bold py-2 px-4 rounded-full hover:bg-blue-500 transition-all duration-300 cursor-pointer">
+              Book
+            </a>
+          </li>
+        </motion.ul>
 
         <a
           href="https://wa.me/6281225121872?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment."
