@@ -47,7 +47,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="flex justify-center items-center h-screen">
+    <section id="FAQ" className="flex justify-center items-center h-screen">
       <div className="w-full max-w-2xl p-4">
         <div className="mx-auto max-w-2xl lg:text-center flex flex-col items-center">
           <h2 className="text-base font-semibold leading-7 text-text text-center">

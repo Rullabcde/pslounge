@@ -10,6 +10,7 @@ import Client from "./components/Client";
 import Footer from "./components/Footer";
 import Faq from "./components/Faq";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Book from "./components/Book";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
       <Facility />
       <Game />
       <Client />
+      <Book />
       <Faq />
       <Footer />
     </div>

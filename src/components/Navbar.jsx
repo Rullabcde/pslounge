@@ -46,7 +46,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full p-4 transition-all duration-300 ${
         isScrolled
-          ? "bg-second py-2 max-w-4xl rounded-full shadow-lg top-3"
+          ? "bg-second bg-opacity-70 backdrop-blur-sm py-2 max-w-4xl rounded-full shadow-lg top-3"
           : "bg-transparent max-w-full"
       } z-10 ${isVisible ? "translate-y-0" : "-translate-y-40"}`}>
       <div className="container mx-auto flex justify-between items-center max-w-6xl">
@@ -82,7 +82,7 @@ const Navbar = () => {
               ? "absolute top-14 py-2 shadow-lg left-0 w-full bg-second"
               : "hidden"
           } md:flex bg-second rounded-lg md:bg-transparent`}>
-          {["home", "services", "benefits", "games", "clients", "faq"].map(
+          {["home", "services", "benefits", "games", "clients", "FAQ"].map(
             (section) => (
               <li key={section} className="relative group">
                 <Link
