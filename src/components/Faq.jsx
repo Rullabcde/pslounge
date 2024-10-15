@@ -47,8 +47,17 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="FAQ" className="flex justify-center items-center h-screen">
-      <div className="w-full max-w-2xl p-4">
+    <section
+      id="FAQ"
+      className="relative flex justify-center items-center h-screen bg-gradient-to-r from-gray-900 via-black to-gray-900">
+      {/* Background with noise pattern */}
+      <div className="absolute top-0 left-0 w-full h-full bg-noise-pattern opacity-20"></div>
+
+      {/* Glowing accent circles */}
+      <div className="absolute top-1/4 left-1/4 bg-gradient-radial from-blue-700 via-transparent to-transparent w-72 h-72 rounded-full blur-2xl opacity-30"></div>
+      <div className="absolute bottom-1/4 right-1/4 bg-gradient-radial from-purple-700 via-transparent to-transparent w-72 h-72 rounded-full blur-2xl opacity-30"></div>
+
+      <div className="relative w-full max-w-2xl p-4">
         <div className="mx-auto max-w-2xl lg:text-center flex flex-col items-center">
           <h2 className="text-base font-semibold leading-7 text-text text-center">
             FAQ

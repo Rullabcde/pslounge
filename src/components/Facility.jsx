@@ -30,8 +30,17 @@ const features = [
 
 function Facility() {
   return (
-    <div id="benefits" className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div
+      id="benefits"
+      className="relative py-24 sm:py-32 bg-gradient-to-r from-gray-900 via-black to-gray-900">
+      {/* Add animated gradient background */}
+      <div className="absolute top-0 left-0 w-full h-full bg-noise-pattern opacity-20"></div>
+
+      {/* Subtle glowing accents */}
+      <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 bg-gradient-radial from-blue-800 via-transparent to-transparent w-96 h-96 rounded-full blur-2xl opacity-50"></div>
+      <div className="absolute bottom-1/4 right-1/4 bg-gradient-radial from-purple-800 via-transparent to-transparent w-80 h-80 rounded-full blur-2xl opacity-40"></div>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         <div className="mx-auto max-w-2xl lg:text-center flex flex-col items-center">
           <h2 className="text-base font-semibold leading-7 text-text">
             Benefits
@@ -39,7 +48,7 @@ function Facility() {
           <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">
             Benefits of Renting at PSLounge
           </p>
-          <p className="mt-2 text-lg leading-8 text-gray-600 text-center">
+          <p className="mt-2 text-lg leading-8 text-gray-400 text-center">
             The following are some of the benefits or advantages that PSLounge
             can offer you.
           </p>
@@ -56,7 +65,7 @@ function Facility() {
                     {feature.name}
                   </p>
                 </dt>
-                <dd className="mt-2 text-base leading-7 text-gray-600">
+                <dd className="mt-2 text-base leading-7 text-gray-400">
                   {feature.description}
                 </dd>
               </div>

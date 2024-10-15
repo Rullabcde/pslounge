@@ -1,3 +1,6 @@
+import React from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 const menuItems = [
   {
     title: "Paket Sewa Harian",
@@ -25,8 +28,17 @@ const menuItems = [
 
 function Services() {
   return (
-    <section id="services">
-      <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+    <section
+      id="services"
+      className="relative py-24 sm:py-32 bg-gradient-to-r from-gray-900 via-black to-gray-900">
+      {/* Add animated gradient background */}
+      <div className="absolute top-0 left-0 w-full h-full bg-noise-pattern opacity-20"></div>
+
+      {/* Subtle glowing accents */}
+      <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 bg-gradient-radial from-blue-800 via-transparent to-transparent w-96 h-96 rounded-full blur-2xl opacity-50"></div>
+      <div className="absolute bottom-1/4 right-1/4 bg-gradient-radial from-purple-800 via-transparent to-transparent w-80 h-80 rounded-full blur-2xl opacity-40"></div>
+
+      <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 relative">
         <div className="mx-auto max-w-2xl lg:text-center flex flex-col items-center">
           <h2 className="text-base font-semibold leading-7 text-text">
             Services
@@ -34,7 +46,7 @@ function Services() {
           <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">
             What are PSLounge Services?
           </p>
-          <p className="mt-2 text-lg leading-8 text-gray-600 text-center">
+          <p className="mt-2 text-lg leading-8 text-gray-400 text-center">
             We provide various services to meet your gaming needs. From daily,
             weekly to event rental packages.
           </p>
@@ -44,8 +56,7 @@ function Services() {
           {menuItems.map((item, index) => (
             <div
               key={index}
-              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-blue-500 hover:shadow-blue-500/10"
-              href="#">
+              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-blue-500 hover:shadow-blue-500/10">
               <div className="text-center mb-4 text-4xl text-white">
                 <i className={item.icon}></i>
               </div>

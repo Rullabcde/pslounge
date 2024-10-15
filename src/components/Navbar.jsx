@@ -44,7 +44,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full p-4 transition-all duration-300 ${
+      className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full p-4 transition-all duration-300 z-20 ${
         isScrolled
           ? "bg-second bg-opacity-70 backdrop-blur-sm py-2 max-w-4xl rounded-full shadow-lg top-3"
           : "bg-transparent max-w-full"
@@ -99,23 +99,24 @@ const Navbar = () => {
           )}
 
           <li className="md:hidden">
-            <a
-              href="https://wa.me/6281225121872?text=Permisi,%20kak%20saya%20ingin%20booking."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-text text-white font-bold py-2 px-4 rounded-full hover:bg-blue-500 transition-all duration-300 cursor-pointer">
+            <Link
+              to="book"
+              smooth={true}
+              duration={500}
+              className="bg-text text-white font-bold py-2 px-4 rounded-full hover:bg-blue-500 transition-all duration-300 cursor-pointer"
+              onClick={() => setIsOpen(false)}>
               Book
-            </a>
+            </Link>
           </li>
         </motion.ul>
 
-        <a
-          href="https://wa.me/6281225121872?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment."
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="book"
+          smooth={true}
+          duration={500}
           className={`bg-text text-white font-bold py-2 px-4 rounded-full ml-4 hover:bg-blue-500 transition-all duration-300 cursor-pointer hidden md:block`}>
           Book
-        </a>
+        </Link>
       </div>
     </nav>
   );
