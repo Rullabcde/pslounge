@@ -1,124 +1,147 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { X, Menu } from "lucide-react";
 import { Link } from "react-scroll";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { motion } from "framer-motion"; // Import Framer Motion
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [isOpen, setIsOpen] = useState(false); // State to handle mobile menu
+  const navRef = useRef(null);
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-
-    // Set isScrolled based on scroll position
-    if (currentScrollY > 10) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
-
-    // Determine scroll direction
-    if (currentScrollY > lastScrollY) {
-      // Scroll down, hide navbar
-      setIsVisible(false);
-    } else {
-      // Scroll up, show navbar
-      setIsVisible(true);
-    }
-
-    setLastScrollY(currentScrollY);
-  };
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen); // Toggle the mobile menu state
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  const menuItems = [
+    { to: "hero", label: "Home" },
+    { to: "services", label: "Services" },
+    { to: "facility", label: "Benefits" },
+    { to: "games", label: "Games" },
+    { to: "faq", label: "FAQ" },
+  ];
+
+  const logo = {
+    url: "/logo.png",
+  };
 
   return (
-    <nav
-      className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full p-4 transition-all duration-300 z-20 ${
-        isScrolled
-          ? "bg-second bg-opacity-70 backdrop-blur-sm py-2 max-w-4xl rounded-full shadow-lg top-3"
-          : "bg-transparent max-w-full"
-      } z-10 ${isVisible ? "translate-y-0" : "-translate-y-40"}`}>
-      <div className="container mx-auto flex justify-between items-center max-w-6xl">
-        <h1
-          className={`text-text text-xl font-bold transition-all duration-300 ml-7 sm:ml-10 lg:text-2xl ${
-            isScrolled ? "ml-10" : ""
-          }`}>
-          PSLounge
-        </h1>
-
-        {/* Animasi Icon Hamburger */}
-        <motion.div
-          className={`md:hidden text-2xl cursor-pointer mr-7 sm:mr-10 ${
-            isScrolled ? "text-white" : "text-white"
-          }`}
-          onClick={toggleMenu}
-          initial={{ rotate: 0 }}
-          animate={{ rotate: isOpen ? 180 : 0 }} // Rotasi saat diklik
-          transition={{ duration: 0.3 }}>
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </motion.div>
-
-        {/* Animasi Menu */}
-        <motion.ul
-          initial={{ opacity: 0, y: -50 }} // Kondisi awal saat menu belum terbuka
-          animate={{
-            opacity: isOpen || window.innerWidth >= 768 ? 1 : 0, // Menu tetap terlihat pada layar besar
-            y: isOpen || window.innerWidth >= 768 ? 0 : -50, // Menu turun pada layar besar
-          }}
-          transition={{ duration: 0.5 }}
-          className={`flex flex-col items-center space-y-4 text-base md:flex-row md:space-x-4 md:space-y-0 md:mt-0 md:items-center lg:text-lg ${
-            isOpen
-              ? "absolute top-14 py-2 shadow-lg left-0 w-full bg-second"
-              : "hidden"
-          } md:flex bg-second rounded-lg md:bg-transparent`}>
-          {["home", "services", "benefits", "games", "clients", "FAQ"].map(
-            (section) => (
-              <li key={section} className="relative group">
+    <div className="fixed top-0 left-0 right-0 z-50 px-4 mx-auto transition-all duration-300 sm:px-6 lg:px-8">
+      <nav
+        className={`w-full transition-all duration-300 ${
+          isScrolled
+            ? "mt-4 bg-second backdrop-blur-md shadow-lg rounded-full"
+            : "bg-transparent"
+        }`}
+        ref={navRef}>
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            <a href="/" className="flex items-center text-text">
+              <img
+                src={logo.url}
+                alt="logo-pslounge"
+                className="w-[60px] h-[60px]"
+                loading="lazy"
+              />
+              <h1 className="hidden md:font-bold md:flex md:text-2xl">
+                PSLounge
+              </h1>
+            </a>
+            <div className="items-center hidden space-x-4 md:flex">
+              {menuItems.map((item, index) => (
                 <Link
-                  to={section}
+                  key={index}
+                  to={item.to}
+                  spy={true}
                   smooth={true}
+                  offset={-70}
                   duration={500}
-                  className="text-white transition duration-300 relative cursor-pointer"
-                  onClick={() => setIsOpen(false)}>
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                  <span className="block h-0.5 bg-text absolute left-0 right-0 bottom-0 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                  className="px-3 py-2 font-medium text-white rounded-md cursor-pointer text-md hover:text-text"
+                  activeClass="text-blue-500">
+                  {item.label}
                 </Link>
-              </li>
-            )
-          )}
-
-          <li className="md:hidden">
+              ))}
+            </div>
+            <div className="flex items-center md:hidden">
+              <button
+                onClick={toggleMenu}
+                className="text-gray-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                aria-label={isOpen ? "Close menu" : "Open menu"}>
+                {isOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div
+        className={`fixed inset-y-0 right-0 w-64 z-40 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        } md:hidden overflow-y-auto`}>
+        <div className="flex justify-end p-4">
+          <button
+            onClick={toggleMenu}
+            className="text-gray-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            aria-label="Close menu">
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          {menuItems.map((item, index) => (
             <Link
-              to="book"
+              key={index}
+              to={item.to}
+              spy={true}
               smooth={true}
+              offset={-70}
               duration={500}
-              className="bg-text text-white font-bold py-2 px-4 rounded-full hover:bg-blue-500 transition-all duration-300 cursor-pointer"
-              onClick={() => setIsOpen(false)}>
-              Book
+              onClick={toggleMenu}
+              className="block px-3 py-2 text-base font-medium text-gray-600 rounded-md cursor-pointer hover:text-blue-600"
+              activeClass="text-blue-500">
+              {item.label}
             </Link>
-          </li>
-        </motion.ul>
-
-        <Link
-          to="book"
-          smooth={true}
-          duration={500}
-          className={`bg-text text-white font-bold py-2 px-4 rounded-full ml-4 hover:bg-blue-500 transition-all duration-300 cursor-pointer hidden md:block`}>
-          Book
-        </Link>
+          ))}
+        </div>
       </div>
-    </nav>
+    </div>
   );
 };
 
