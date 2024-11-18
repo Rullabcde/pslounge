@@ -15,7 +15,7 @@ const ChatBot = () => {
         {isOpen && (
           <>
             <motion.a
-              href="https://wa.me/6281225121872"
+              href="https://wa.me/621233456789"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ const ChatBot = () => {
               <FaWhatsapp size={24} />
             </motion.a>
             <motion.a
-              href="https://instagram.com/rullabcd"
+              href="https://instagram.com/pslounge"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
