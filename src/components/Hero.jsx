@@ -3,23 +3,35 @@ import { Link } from "react-scroll";
 
 const Hero = () => {
   return (
-    <section id="hero" className="flex items-center justify-center h-screen">
-      <div
-        className="container relative max-w-6xl text-center ml-7 lg:ml-10 md:ml-10 sm:ml-10"
-        data-aos="fade-right">
-        <div className="absolute top-0 left-0 border-l-4 h-36 border-text lg:h-60 md:h-48 sm:h-40"></div>
-        <div className="absolute bottom-0 left-0 border-l-4 h-36 border-text lg:h-60 md:h-48 sm:h-40"></div>
-        <div className="ml-4 text-left">
-          <h2 className="mb-6 text-4xl font-bold text-white lg:text-7xl md:text-5xl">
-            Step Into the Ultimate <br /> Gaming Arena!
-          </h2>
-          <Link
-            to="services"
-            smooth={true}
-            duration={500}
-            className="px-4 py-2 font-bold text-white transition duration-300 rounded cursor-pointer bg-text hover:bg-blue-800 md:px-6 md:py-3">
-            Explore
-          </Link>
+    <section id="hero">
+      <div className="max-w-screen-xl px-4 py-32 mx-auto lg:flex lg:h-screen lg:items-center">
+        <div className="max-w-xl mx-auto text-center">
+          <h1 className="text-3xl font-extrabold text-text sm:text-5xl">
+            Step Into the Ultimate
+            <strong className="font-extrabold text-redterang sm:block">
+              {" "}
+              Gaming Arena{" "}
+            </strong>
+          </h1>
+
+          <p className="mt-4 text-gray-400 sm:text-xl/relaxed">
+            Battle, strategy, adrenaline, victory, teamwork, esports, power-ups,
+            challenges, multiplayer, immersive, leaderboard, action!
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            <Link
+              to="services"
+              className="block w-full px-12 py-3 text-sm font-medium rounded-lg shadow-sm cursor-pointer text-text bg-redterang hover:bg-highpurple focus:ring-3 focus:outline-hidden sm:w-auto">
+              Get Started
+            </Link>
+
+            <Link
+              to="services"
+              className="block w-full px-12 py-3 text-sm font-medium rounded-lg shadow-sm cursor-pointer text-redterang hover:text-highpurple focus:ring-3 focus:outline-hidden sm:w-auto">
+              Learn More
+            </Link>
+          </div>
         </div>
       </div>
     </section>

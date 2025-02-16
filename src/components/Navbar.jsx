@@ -51,9 +51,8 @@ const Navbar = () => {
   const menuItems = [
     { to: "hero", label: "Home" },
     { to: "services", label: "Services" },
-    { to: "facility", label: "Benefits" },
     { to: "games", label: "Games" },
-    { to: "faq", label: "FAQ" },
+    { to: "footer", label: "Book" },
   ];
 
   const logo = {
@@ -78,9 +77,6 @@ const Navbar = () => {
                 className="w-[60px] h-[60px]"
                 loading="lazy"
               />
-              <h1 className="hidden md:font-bold md:flex md:text-2xl">
-                PSLounge
-              </h1>
             </a>
             <div className="items-center hidden space-x-4 md:flex">
               {menuItems.map((item, index) => (
@@ -91,7 +87,7 @@ const Navbar = () => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="px-3 py-2 font-medium text-white rounded-md cursor-pointer text-md hover:text-text"
+                  className="px-3 py-2 font-medium rounded-md cursor-pointer text-text text-md hover:text-highred"
                   activeClass="text-blue-500">
                   {item.label}
                 </Link>
@@ -100,7 +96,7 @@ const Navbar = () => {
             <div className="flex items-center md:hidden">
               <button
                 onClick={toggleMenu}
-                className="text-gray-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="text-text hover:text-gray-400 focus:outline-none "
                 aria-label={isOpen ? "Close menu" : "Open menu"}>
                 {isOpen ? (
                   <X className="w-6 h-6" />
@@ -113,13 +109,13 @@ const Navbar = () => {
         </div>
       </nav>
       <div
-        className={`fixed inset-y-0 right-0 w-64 z-40 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 right-0 w-64 z-40 bg-text shadow-lg transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } md:hidden overflow-y-auto`}>
         <div className="flex justify-end p-4">
           <button
             onClick={toggleMenu}
-            className="text-gray-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="text-gray-600 hover:text-highred focus:outline-none "
             aria-label="Close menu">
             <X className="w-6 h-6" />
           </button>
@@ -134,8 +130,8 @@ const Navbar = () => {
               offset={-70}
               duration={500}
               onClick={toggleMenu}
-              className="block px-3 py-2 text-base font-medium text-gray-600 rounded-md cursor-pointer hover:text-blue-600"
-              activeClass="text-blue-500">
+              className="block px-3 py-2 text-base font-medium text-gray-600 rounded-md cursor-pointer hover:text-highred"
+              activeClass="text-highred">
               {item.label}
             </Link>
           ))}

@@ -4,9 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: "#111827",
-        text: "#1d4ed8",
-        second: "#1f2937",
+        bg: "#121212",
+        text: "#FFFFFF",
+        textsecond: "#B3B3B3",
+        second: "#1E1E1E",
+        highred: "#FF4655",
+        highpurple: "#8A2BE2",
+        highgreen: "#00FF7F",
+        highyellow: "#FFA500",
+        redterang: "#FF0000",
+        borderabu: "#292929",
       },
     },
   },
