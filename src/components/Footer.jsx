@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-scroll";
+import BookingModal from "./CustomModal";
 
 const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <footer id="footer" className="bg-white">
       <div className="max-w-screen-xl px-4 pt-16 pb-8 mx-auto sm:px-6 lg:px-8 lg:pt-24">
@@ -18,11 +24,11 @@ const Footer = () => {
             for your comfort.
           </p>
 
-          <a
-            href="#"
+          <button
+            onClick={openModal}
             className="inline-block px-12 py-3 mt-8 text-sm font-medium border rounded-full text-redterang border-redterang hover:bg-redterang hover:text-white focus:ring-3 focus:outline-hidden">
             Book Now
-          </a>
+          </button>
         </div>
 
         <div className="pt-8 mt-16 border-t border-second sm:flex sm:items-center sm:justify-between lg:mt-24">
@@ -120,6 +126,9 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+
+      {/* Render the modal component */}
+      <BookingModal isOpen={isModalOpen} onClose={closeModal} />
     </footer>
   );
 };
