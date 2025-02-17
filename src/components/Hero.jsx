@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 const Hero = () => {
   return (
     <section id="hero">
-      <div className="max-w-screen-xl px-4 py-32 mx-auto lg:flex lg:h-screen lg:items-center">
+      <div className="max-w-screen-xl px-4 py-32 mx-auto lg:flex h-screen lg:items-center">
         <div className="max-w-xl mx-auto text-center">
           <h1 className="text-3xl font-extrabold text-text sm:text-5xl">
             Step Into the Ultimate
