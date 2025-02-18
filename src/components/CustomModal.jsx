@@ -48,28 +48,29 @@ Package: ${packageDetails}
   const packages = [
     {
       id: "standard",
-      name: "Standard Package",
-      description: "Perfect for small gatherings, 2 hours of relaxation",
-      price: "$100",
+      name: "Paket Full Day",
+      description:
+        "Rent a PlayStation with your favorite games for a full day.",
+      price: "$5",
     },
     {
       id: "premium",
-      name: "Premium Package",
-      description: "Enhanced experience with special amenities, 3 hours",
-      price: "$180",
+      name: "Paket Weekly",
+      description: "Weekly PlayStation rental available.",
+      price: "$25",
     },
     {
       id: "deluxe",
-      name: "Deluxe Package",
-      description: "Complete luxury experience with all services, 4 hours",
-      price: "$250",
+      name: "Paket Event",
+      description: "Rent a PS console with accessories for events or parties.",
+      price: "$30",
     },
     {
       id: "exclusive",
-      name: "Exclusive Package",
+      name: "Paket E-Sport",
       description:
-        "VIP treatment with private room and personal staff, 6 hours",
-      price: "$400",
+        "Complete gaming setup rental for local e-sports competitions.",
+      price: "$35",
     },
   ];
 

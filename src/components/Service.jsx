@@ -18,7 +18,7 @@ const menuItems = [
     icon: "fas fa-users",
   },
   {
-    title: "Paket E-sport",
+    title: "Paket E-Sport",
     description:
       "Complete gaming setup rental for local e-sports competitions.",
     icon: "fas fa-trophy",
